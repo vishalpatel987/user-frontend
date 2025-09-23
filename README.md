@@ -1,12 +1,43 @@
-# React + Vite
+# User Dashboard Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 1. Project Overview
+This project is the **User Dashboard Frontend**, which provides the user interface for:
+- User authentication
+- Profile management
+- Dashboard features
 
-Currently, two official plugins are available:
+**Tech Stack:** React.js (Vite), React Router, Axios, Tailwind CSS (if used)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## Expanding the ESLint configuration
+## 2. Installation Steps
+1. Clone the repository  
+   git clone https://github.com/vishalpatel987/user-frontend.git  
+   cd user-frontend  
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+2. Install dependencies  
+   npm install  
+
+---
+
+## 3. Environment Configuration
+Create a `.env` file in the **frontend root folder** and add the following variable:
+
+VITE_API_URL=http://localhost:5000/api
+
+- Replace `http://localhost:5000/api` with your backend API URL (local or deployed).  
+- Make sure `.env` is added to `.gitignore` so it doesn’t get pushed to GitHub.  
+
+---
+
+## 4. Running the Application
+- Development Mode:  
+  npm run dev  
+  Runs the app on: http://localhost:5173 (with hot reload)  
+
+- Production Build:  
+  npm run build  
+  npm run preview  
+  Builds optimized production files and serves them locally.  
+
+
