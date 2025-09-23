@@ -1,4 +1,3 @@
-
 import React, { useEffect, useState } from 'react';
 import api from '../services/api';
 import Loader from '../components/Loader';
@@ -35,12 +34,22 @@ const AdminDashboard = () => {
   // Delete user
   const handleDelete = async (id) => {
     if (!window.confirm('Are you sure you want to delete this user?')) return;
+
     try {
-      await api.delete(`/users/${id}`);
-      toast.success('User deleted successfully');
-      fetchUsers();
+      const res = await api.delete(`/users/${id}`);
+
+      // 🔹 Agar admin khud delete kar raha hai
+      if (res.data.selfDeleted) {
+        localStorage.removeItem('token'); // purana token remove
+        toast.success('You deleted your own account. Logging out...');
+        window.location.href = '/login'; // redirect to login page
+        return;
+      }
+
+      toast.success(res.data.message || 'User deleted successfully');
+      fetchUsers(); // refresh user list
     } catch (err) {
-      toast.error('Delete failed');
+      toast.error(err.response?.data?.message || 'Delete failed');
     }
   };
 
